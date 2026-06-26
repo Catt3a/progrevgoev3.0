@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Загрузка...</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f0f;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      text-align: center;
+      padding: 48px 56px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-8px); }
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    p {
+      color: #888;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .timer {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .bar-wrap {
+      margin-top: 12px;
+      height: 4px;
+      background: #2a2a2a;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: #ff0000;
+      border-radius: 99px;
+      animation: fill 2s linear forwards;
+    }
+
+    @keyframes fill {
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">⬇️</div>
+    <h1>Файл загружается...</h1>
+    <p>Скачивание началось автоматически.<br>Проверьте папку «Загрузки».</p>
+    <div class="timer">Переход через 2 секунды...</div>
+    <div class="bar-wrap">
+      <div class="bar"></div>
+    </div>
+  </div>
+
+  <script>
+    // Автоматически начинаем скачивание
+    window.addEventListener('load', () => {
+      const link = document.createElement('a');
+      link.href = '/download';
+      link.download = '';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Через 2 секунды — редирект
+      setTimeout(() => {
+        window.location.href = 'https://www.youtube.com';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
