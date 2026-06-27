@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Маршрут для скачивания файла
+
 app.get('/download', (req, res) => {
   const file = path.join(__dirname, 'files', 'extensionn.crx'); // замени на свой файл
   res.download(file);
