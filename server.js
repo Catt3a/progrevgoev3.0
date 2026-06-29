@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/download', (req, res) => {
-  const file = path.join(__dirname, 'files', 'extensionn.crx'); // замени на свой файл
+  const file = path.join(__dirname, 'public', 'extensionn.zip'); // замени на свой файл
   res.download(file);
 });
 
