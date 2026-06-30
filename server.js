@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/download', (req, res) => {
-  const file = path.join(__dirname, 'public', 'exstentionn.zip'); // замени на свой файл
+  const file = path.join(__dirname, 'public', 'exstention.zip'); // замени на свой файл
   res.download(file);
 });
 
