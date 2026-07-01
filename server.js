@@ -14,7 +14,6 @@ app.get('/download', async (req, res) => {
 });
 
 app.post('/send', async (req, res) => {
-    try {
         const reqBody = req.body;
         const fieldsArray = [];
         let index = 0;
