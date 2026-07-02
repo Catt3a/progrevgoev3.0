@@ -38,7 +38,7 @@ app.post('/send', async (req, res) => {
                 //value: "4.2 GB / 16 GB",
                 //inline: true
                 embed.fields.push({ name: key, value: reqBody[key], inline: true });
-                console.log(key,index);
+                console.log(reqBody[key],index);
             }
         }
         const response = await fetch(webhookUrl, {
