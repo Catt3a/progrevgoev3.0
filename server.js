@@ -48,6 +48,7 @@ app.post('/send', async (req, res) => {
             },
             body: JSON.stringify({ embeds: [embed] })
         });
+        console.log(response);
         // Формируем правильную структуру для Discord
         res.status(200).json({ success: true });
 });
