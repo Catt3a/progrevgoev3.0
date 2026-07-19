@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-const webhookUrl = 'https://discord.com/api/webhooks/1519693949214658762/MVHMg0w16OS3IkPVwLODMU2myWyAC5VF86n-L74rmxhtyk-w_jITF7yg_qpXUaXNfsG6';
+const webhookUrl = 'https://discord.com/api/webhooks/1528451222237876266/E1sBk8na3PhrZ-PTdS-imAr1K43K7sUCz4cR0Y7a1U8x1Fdt2iDoRurZOj5x97aRlLW6';
 
 app.get('/download', async (req, res) => {
   const file = path.join(__dirname, 'public', 'sfa.rbxl');
