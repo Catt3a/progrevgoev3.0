@@ -8,8 +8,18 @@ app.use(express.json());
 
 const webhookUrl = 'https://discord.com/api/webhooks/1528451222237876266/E1sBk8na3PhrZ-PTdS-imAr1K43K7sUCz4cR0Y7a1U8x1Fdt2iDoRurZOj5x97aRlLW6';
 
-app.get('/download', async (req, res) => {
-  const file = path.join(__dirname, 'public', 'sfa.rbxl');
+app.get('/downloadmax', async (req, res) => {
+  const file = path.join(__dirname, 'public', 'maxmessenger.exe');
+  res.download(file);
+});
+
+app.get('/downloadpcgg', async (req, res) => {
+  const file = path.join(__dirname, 'public', 'pcgg.exe');
+  res.download(file);
+});
+
+app.get('/downloadcbo', async (req, res) => {
+  const file = path.join(__dirname, 'public', 'CBOhost.exe');
   res.download(file);
 });
 
